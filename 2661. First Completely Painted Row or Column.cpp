@@ -43,22 +43,6 @@ public:
 // Approach--1 Using two array for count row and column
 class Solution {
 public:
-
-    int isRowPainted(int row, vector<vector<int>>& mat){
-        for(int col = 0; col<mat[0].size(); col++){
-            if(mat[row][col] > 0) return false;
-        }
-
-        return true;
-    }
-    int isColPainted(int col, vector<vector<int>>& mat){
-        for(int row = 0; row<mat.size(); row++){
-            if(mat[row][col] > 0) return false;
-        }
-
-        return true;
-    }
-
     int firstCompleteIndex(vector<int>& arr, vector<vector<int>>& mat) {
         int m = mat.size();
         int n = mat[0].size();
