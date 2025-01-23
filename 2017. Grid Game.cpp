@@ -19,7 +19,6 @@ public:
 
             secondRowRemainSum    += grid[1][Robot1Col];
         }
-
         return minimizedRobot2Sum;
     }
 };
