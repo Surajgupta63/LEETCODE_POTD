@@ -22,7 +22,6 @@ public:
 
         while(!q.empty()){
             int size = q.size();
-
             while(size--){
                 pair<int, int> p = q.front();
                 q.pop();
