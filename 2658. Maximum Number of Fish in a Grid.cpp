@@ -1,6 +1,6 @@
 // Approach--1 Using BFS
 // T.C: O(m*n)
-// S.C : O(m*n)
+// S.C : O(1)
 class Solution {
 public:
     typedef pair<int, int> P;
