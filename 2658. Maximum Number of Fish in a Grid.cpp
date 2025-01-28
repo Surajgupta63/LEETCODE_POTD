@@ -1,4 +1,4 @@
-// Using BFS
+// Approach--1 Using BFS
 // T.C: O(m*n)
 // S.C : O(m*n)
 class Solution {
@@ -39,6 +39,42 @@ public:
             for(int j=0; j<n; j++){
                 if(grid[i][j] > 0){
                     ans = max(ans, BFS(grid, i, j));
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+// Approach--2 Using DFS
+// T.C: O(m*n)
+// S.C : O(m*n)
+class Solution {
+public:
+    int m, n;
+    vector<vector<int>> directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    int DFS(vector<vector<int>>& grid, int row, int col){
+        int ans = grid[row][col];
+        grid[row][col] = 0;
+
+        for(auto &dir : directions){
+            int row_ = row + dir[0];
+            int col_ = col + dir[1];
+            if(row_ >= 0 && row_ < m && col_ >= 0 && col_ < n && grid[row_][col_] > 0){
+                ans += DFS(grid, row_, col_);
+            } 
+        }
+        return ans;
+    }
+    int findMaxFish(vector<vector<int>>& grid) {
+        m = grid.size();
+        n = grid[0].size();
+        int ans = 0;
+        // O(m*n);
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+                if(grid[i][j] > 0){
+                    ans = max(ans, DFS(grid, i, j));
                 }
             }
         }
