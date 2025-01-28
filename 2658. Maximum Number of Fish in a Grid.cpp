@@ -34,8 +34,6 @@ public:
     int findMaxFish(vector<vector<int>>& grid) {
         m = grid.size();
         n = grid[0].size();
-        vector<int> result;
-        
         int ans = 0;
         for(int i=0; i<m; i++){
             for(int j=0; j<n; j++){
