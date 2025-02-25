@@ -1,6 +1,6 @@
 // Aproach-1 Using Prefix Sum
 // T.C : O(n)
-// S.C : O(1)
+// S.C : O(n)
 class Solution {
 public:
     int MOD = 1e9 + 7;
@@ -24,6 +24,35 @@ public:
                 ans = (ans + odd) % MOD;
             }
             else if(prefixSum[i] % 2 != 0){
+                odd++;
+                ans = (ans + even) % MOD;
+            }
+        }
+
+        return ans;
+    }
+};
+
+// Aproach-1 Using Prefix Sum
+// T.C : O(n)
+// S.C : O(1) // Space Optimization
+class Solution {
+public:
+    int MOD = 1e9 + 7;
+    int numOfSubarrays(vector<int>& arr) {
+        int n = arr.size();
+        int sum = 0;
+        int even = 1;
+        int odd = 0;
+        int ans = 0;
+
+        for(int i=0; i<n; i++){
+            sum += arr[i];
+            if(sum % 2 == 0){
+                even++;
+                ans = (ans + odd) % MOD;
+            }
+            else if(sum % 2 != 0){
                 odd++;
                 ans = (ans + even) % MOD;
             }
