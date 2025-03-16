@@ -1,3 +1,4 @@
+// Approach - Binary Search
 // T.C : O(n*log(maxR*cars*cars))
 // S.C : O(1)
 class Solution {
