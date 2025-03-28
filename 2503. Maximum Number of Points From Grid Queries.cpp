@@ -46,3 +46,54 @@ public:
         return ans;
     }
 };
+
+// Approach-1 Using Pririty_queue(Accepted)
+// T.C: O(m*n * lof(m*n)
+// S.C: O(m*n)
+class Solution {
+public:
+    vector<vector<int>> directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    
+    vector<int> maxPoints(vector<vector<int>>& grid, vector<int>& queries) {
+        int m = grid.size();
+        int n = grid[0].size();
+        int Q = queries.size();
+
+        vector<int> ans(Q, 0);
+        vector<pair<int, int>> sortedQ;
+        for(int i=0; i<Q; i++){
+            sortedQ.push_back({queries[i], i});
+        }
+
+        sort(begin(sortedQ), end(sortedQ)); // O(Qlog(Q))
+        vector<vector<bool>> visited(m, vector<bool>(n, false));
+        priority_queue<vector<int>, vector<vector<int>>, greater<>> pq;
+        pq.push({grid[0][0], 0, 0});
+        visited[0][0] = true;
+        int points = 0;
+
+        //O( Qlog(Q) + m*n * log(m*n))
+        for(int i=0; i<Q; i++){
+            int val = sortedQ[i].first;
+            int idx = sortedQ[i].second;
+            while(!pq.empty() && pq.top()[0] < val){
+                int x = pq.top()[1];
+                int y = pq.top()[2];
+                pq.pop();
+                points++;
+
+                for(auto &dir: directions){
+                    int x_ = x + dir[0];
+                    int y_ = y + dir[1];
+                    if(x_ >= 0 && x_ < m && y_ >= 0 && y_ < n && !visited[x_][y_]){
+                        pq.push({grid[x_][y_], x_, y_});
+                        visited[x_][y_] = true;
+                    }
+                }
+            }
+            ans[idx] = points;
+        }
+
+        return ans;
+    }
+};
