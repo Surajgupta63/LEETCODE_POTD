@@ -1,5 +1,5 @@
 // Approach -1 Brute Force
-// T.C: O(n^2)
+// T.C: O((high - low +1)*number of digits)
 // S.C: O(1)
 class Solution {
 public:
@@ -31,7 +31,7 @@ public:
 };
 
 // Approach -2 Optimal
-// T.C: O(n)
+// T.C: O(high - low + 1)
 // S.C: O(1)
 class Solution {
 public:
