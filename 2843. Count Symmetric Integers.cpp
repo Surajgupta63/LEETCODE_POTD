@@ -29,3 +29,27 @@ public:
         return count;
     }
 };
+
+// Approach -2 Optimal
+// T.C: O(n)
+// S.C: O(1)
+class Solution {
+public:
+    int countSymmetricIntegers(int low, int high) {
+        int count = 0;
+
+        for(int i=low; i<= high; i++){
+            if(i >= 10 && i <= 99 && i % 11 == 0) count++;
+            else if(i >= 1000 && i <= 9999){
+                int d1 = (i/1000);
+                int d2 = (i/100) % 10;
+                int d3 = (i/10) % 10;
+                int d4 = i % 10;
+
+                if(d1 + d2 == d3 + d4) count++;
+            }
+        }
+
+        return count;
+    }
+};
